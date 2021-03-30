@@ -7,16 +7,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <title>HOME</title>
+    <title>PRIVACY</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Links -->
-    <link rel="stylesheet" href="css/camera.css">
     <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/google-map.css">
-
 
     <!--JS-->
     <script src="js/jquery.js"></script>
@@ -62,7 +59,7 @@
 				<div class="">  
 				  <ul class="nav navbar-nav sf-menu sf-js-enabled sf-arrows" data-type="navbar">
 					<li style="list-style: none;" class="active">
-					  <a href="home.html">INICIO</a>
+					  <a href="home.php">INICIO</a>
 					</li>
 					<li style="list-style: none;">
 					  <a href="./">LISTA EMPRESAS</a>
@@ -70,7 +67,7 @@
 				  </ul>                           
 				</div>
 			</nav>
-			<form class="search-form" action="buscador.html" method="GET" accept-charset="utf-8">
+			<form class="search-form" action="buscador.php" method="GET" accept-charset="utf-8">
 			  <label class="search-form_label">
 				<input class="search-form_input" type="text" name="buscar" autocomplete="off" placeholder="Ingrese Texto"/>
 				<span class="search-form_liveout"></span>
@@ -90,98 +87,52 @@
 
     <main>        
 
-      <section class="well well1 well1_ins1">
-        <div class="camera_container">
-          <div id="camera" class="camera_wrap">
-            <div data-src="images/page-1_slide1.jpg">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron1">
-                  <em>
-                    <a href="detalle.html">Titulo Noticia</a>
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
-                    <a href="detalle.html" class="btn-link fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div data-src="images/page-1_slide2.jpg">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron2">
-                  <em>
-                    Titulo Noticia
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
-                    <a href="#" class="btn-link hov_prime fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div data-src="images/page-1_slide3.jpg">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron">
-                  <em>
-                    Titulo Noticia
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
-                    <a href="#" class="btn-link fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-      </section>
-      
-      <section class="well well2 wow fadeIn  bg1" data-wow-duration='3s'>
+      <section class="well well4">
+		
         <div class="container">
-        <h2 class="txt-pr">
-        Quienes Somos
-        </h2>
-          <div class="row">
-            <div class="col">
-              <p style="text-align:justify">
-                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
+			<center>
+				<div id="imagenPrincipal" style="height: 450px; background-image: url('http://localhost:82/template_html/images/page-1_slide1.jpg?1583775512626'); background-repeat: no-repeat;background-size: cover;">
+					<div style="text-align:left; background-color: rgba(1,1,1,0.5);color: #ffffff;font-size: 16px;line-height: 50px;">
+					 Titulo de la Noticia                        
+					</div>
+				</div>
+			</center>
+		  <h2>
+            Titulo de la Noticia
+          </h2>
+		  Fecha Publicacion: 12/02/2020
+		  <hr>
+          <div class="row offs2">
+            
+            <div class="col-lg-12">
+              <dl class="terms-list">
+                <dt>
+					Resumen de la noticia
+                </dt>
+				<hr>
+                <dd>
+					Contenido HTML de la Noticia
+				</dd>
+              </dl>
             </div>
           </div>
         </div>
-      </section>
+      </section>   
+      
 
     </main>
 
     <!--========================================================
                             FOOTER
   =========================================================-->
-  <footer class="top-border">
-	<section class="well well2 wow fadeIn  bg1" data-wow-duration='3s'>
-        <div class="container">
-        <h2 class="txt-pr">
-        Donde estamos
-        </h2>
-        </div>
-    </section>
-	<div class="map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11270.125646913215!2d-68.83492456656404!3d-32.88154997304907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1615335513448!5m2!1ses-419!2sar" width="1600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <section class="well1">
+  <footer>
+   <section class="well">
       <div class="container"> 
             <p class="rights">
               Denominación Empresa  &#169; <span id="copyright-year"></span>
               <a href="index-5.html">Privacy Policy</a>
               <!-- {%FOOTER_LINK} -->
-            </p>          
+            </p>           
       </div> 
     </section>    
   </footer>
@@ -194,6 +145,7 @@
     <script src="js/tm-scripts.js"></script>    
   <!-- </script> -->
 
+<!-- coded by vitlex -->
 
   </body>
 </html>

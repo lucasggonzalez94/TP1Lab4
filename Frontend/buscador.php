@@ -1,7 +1,19 @@
+<?php
+require('../Backend/config/database.php');
+include('../Backend/noticias.php');
+include('../Backend/empresas.php');
+
+$idEmpresa = $_GET['id'];
+$busqueda = $_GET['buscar'];
+
+$empresa = mysqli_fetch_assoc(selectEmpresaPorId($idEmpresa));
+$resultado = buscarNoticias($idEmpresa, $busqueda);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+  	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -41,15 +53,15 @@
       <div class="container top-sect">
         <div class="navbar-header">
           <h1 class="navbar-brand">
-            <a data-type='rd-navbar-brand'  href="./"><small>Denominación <br>Empresa</small></a>
+            <a data-type='rd-navbar-brand'  href="./"><small><?php echo $empresa['denominacion'] ?></small></a>
           </h1>
           <a class="search-form_toggle" href="#"></a>
         </div>
 
         <div class="help-box text-right">
           <p>Telefono</p>
-          <a href="callto:#">800-2345-6789</a>
-          <small><span>Horario:</span>  6am-4pm PST M-Th; &nbsp;6am-3pm PST Fri</small>
+          <a href="callto:#"><?php echo $empresa['telefono'] ?></a>
+          <small><span>Horario:</span> <?php echo $empresa['horario_de_atencion'] ?></small>
         </div>
       </div>
      
@@ -59,7 +71,7 @@
 				<div class="">  
 				  <ul class="nav navbar-nav sf-menu sf-js-enabled sf-arrows" data-type="navbar">
 					<li style="list-style: none;" class="active">
-					  <a href="home.html">INICIO</a>
+					  <a href="home.php?id=<?php echo $empresa['id'] ?>">INICIO</a>
 					</li>
 					<li style="list-style: none;">
 					  <a href="./">LISTA EMPRESAS</a>
@@ -67,14 +79,14 @@
 				  </ul>                           
 				</div>
 			</nav>
-			<form class="search-form" action="buscador.html" method="GET" accept-charset="utf-8">
+			<form class="search-form" action="buscador.php?id=<?php echo $empresa['id'] ?>" method="GET" accept-charset="utf-8">
 			  <label class="search-form_label">
 				<input class="search-form_input" type="text" name="buscar" autocomplete="off" placeholder="Ingrese Texto"/>
 				<span class="search-form_liveout"></span>
 			  </label>
 			  <button class="search-form_submit fa-search" type="submit"></button>
 			</form>
-             
+				 
         </div>
 
       </div>  
@@ -90,31 +102,35 @@
       <section class="well well4">
 		
         <div class="container">
-			<center>
-				<div id="imagenPrincipal" style="height: 450px; background-image: url('http://localhost:82/template_html/images/page-1_slide1.jpg?1583775512626'); background-repeat: no-repeat;background-size: cover;">
-					<div style="text-align:left; background-color: rgba(1,1,1,0.5);color: #ffffff;font-size: 16px;line-height: 50px;">
-					 Titulo de la Noticia                        
-					</div>
-				</div>
-			</center>
-		  <h2>
-            Titulo de la Noticia
+			
+          <h2>
+            <?php echo $busqueda ?>
           </h2>
-		  Fecha Publicacion: 12/02/2020
-		  <hr>
           <div class="row offs2">
             
-            <div class="col-lg-12">
-              <dl class="terms-list">
-                <dt>
-					Resumen de la noticia
-                </dt>
-				<hr>
-                <dd>
-					Contenido HTML de la Noticia
-				</dd>
-              </dl>
-            </div>
+            <table width="90%" align="center">
+				<tbody>
+					<?php while($noticia = mysqli_fetch_assoc($resultado)): ?>
+						<tr>
+							<td>
+								<a href="detalle.php">
+									<img width="250px" class="imgNoticia" src="http://localhost:82/template_html/images/page-1_slide1.jpg?1583775512626" alt="">
+								</a>
+							</td>
+							<td width="25"></td>
+							<td style="text-align:justify;" valign="top">
+								<a style="text-align:justify; font-size:20px" href="detalle.php" class="banner"><?php echo $noticia['titulo_de_la_noticia'] ?></a>
+								<div class="verOcultar">
+									<?php echo $noticia['resumen_de_la_noticia'] ?><a href="detalle.php" style="color:blue"> Leer Mas - <?php echo $noticia['fecha_publicacion'] ?></a>
+								</div>
+							</td>
+						</tr>
+					<?php endwhile; ?>
+				</tbody>
+			</table>
+			<hr>
+			
+			
           </div>
         </div>
       </section>   
@@ -129,10 +145,10 @@
    <section class="well">
       <div class="container"> 
             <p class="rights">
-              Denominación Empresa  &#169; <span id="copyright-year"></span>
+			<?php echo $empresa['denominacion'] ?> &#169; <span id="copyright-year"></span>
               <a href="index-5.html">Privacy Policy</a>
               <!-- {%FOOTER_LINK} -->
-            </p>           
+            </p>        
       </div> 
     </section>    
   </footer>
