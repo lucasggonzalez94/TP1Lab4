@@ -84,7 +84,7 @@ $noticias = selectNoticiasPorIdEmpresa($id);
                             </ul>
                         </div>
                     </nav>
-                    <form class="search-form" action="buscador.php?id=<?php echo $empresa['id'] ?>" method="GET" accept-charset="utf-8">
+                    <form class="search-form" action="buscador.php" method="GET" accept-charset="utf-8">
                         <label class="search-form_label">
                             <input class="search-form_input" type="text" name="buscar" autocomplete="off" placeholder="Ingrese Texto" />
                             <input style="display: none;" type="text" name="id" value="<?php echo $empresa['id'] ?>"/>
@@ -119,7 +119,7 @@ $noticias = selectNoticiasPorIdEmpresa($id);
                                             <p>
                                                 <?php echo $noticia['resumen_de_la_noticia'] ?>
                                             </p>
-                                            <a href="detalle.php?id=<?php echo $noticia['id'] ?>" class="btn-link fa-angle-right"></a>
+                                            <a href="detalle.php?id=<?php echo $noticia['id'] ?>&idEmpresa=<?php echo $empresa['id'] ?>" class="btn-link fa-angle-right"></a>
                                         </div>
                                     </div>
                                 </div>
