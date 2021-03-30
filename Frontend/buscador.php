@@ -79,9 +79,10 @@ $resultado = buscarNoticias($idEmpresa, $busqueda);
 				  </ul>                           
 				</div>
 			</nav>
-			<form class="search-form" action="buscador.php?id=<?php echo $empresa['id'] ?>" method="GET" accept-charset="utf-8">
+			<form class="search-form" action="buscador.php" method="GET" accept-charset="utf-8">
 			  <label class="search-form_label">
 				<input class="search-form_input" type="text" name="buscar" autocomplete="off" placeholder="Ingrese Texto"/>
+				<input style="display: none;" type="text" name="id" value="<?php echo $empresa['id'] ?>"/>
 				<span class="search-form_liveout"></span>
 			  </label>
 			  <button class="search-form_submit fa-search" type="submit"></button>
@@ -121,7 +122,8 @@ $resultado = buscarNoticias($idEmpresa, $busqueda);
 							<td style="text-align:justify;" valign="top">
 								<a style="text-align:justify; font-size:20px" href="detalle.php" class="banner"><?php echo $noticia['titulo_de_la_noticia'] ?></a>
 								<div class="verOcultar">
-									<?php echo $noticia['resumen_de_la_noticia'] ?><a href="detalle.php" style="color:blue"> Leer Mas - <?php echo $noticia['fecha_publicacion'] ?></a>
+									<?php echo $noticia['resumen_de_la_noticia'] ?>
+									<a href="detalle.php?id=<?php echo $noticia['id'] ?>&idEmpresa=<?php echo $empresa['id'] ?>" style="color:blue"> Leer Mas - <?php echo $noticia['fecha_publicacion'] ?></a>
 								</div>
 							</td>
 						</tr>
